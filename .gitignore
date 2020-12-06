@@ -1,0 +1,10 @@
+README
+xgrenc00
+*.zip
+*.synctex.gz
+*.aux
+*.bbl
+*.blg
+*.log
+*.out
+*.toc
