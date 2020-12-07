@@ -18,6 +18,9 @@ $(BIN): $(SRC) $(HEADER)
 debug: $(SRC) $(HEADER)
 	$(CC) $(SRC) -o $(BIN) $(CFLAGS) -g -DDEBUG=1 $(LDLIBS)
 
+upload:
+	scp $(SRC) $(HEADER) Makefile eva:~/IMS
+
 zip:
 	zip -r 06_$(LOGIN).zip $(PROJECT_FILES)
 
@@ -39,4 +42,4 @@ docclean:
 	rm -f $(DOC).aux $(DOC).bbl $(DOC).blg $(DOC).log $(DOC).out $(DOC).toc $(DOC).synctex.gz
 
 # ALL
-all: clean $(BIN) doc zip
+all: clean $(BIN) upload doc zip
