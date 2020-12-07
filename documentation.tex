@@ -1,0 +1,180 @@
+% ----------- Author: Radoslav Grenčík, xgrenc00@stud.fit.vutbr.cz ----------- %
+
+\documentclass[a4paper, 11pt]{article}
+\usepackage[slovak]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[left=2cm, top=3cm, text={17cm, 24cm}]{geometry}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{csquotes}
+\MakeOuterQuote{"}
+\usepackage[hyphens]{url}
+\usepackage{hyperref}
+\hypersetup{hidelinks}
+\usepackage[perpage]{footmisc}
+\usepackage{multirow}
+\usepackage[normalem]{ulem}
+\useunder{\uline}{\ul}{}
+
+\begin{document}
+
+% ---------------------------------------------------------------------------- %
+%                                  TITLE PAGE                                  %
+% ---------------------------------------------------------------------------- %
+\begin{titlepage}
+	\begin{center}
+		\includegraphics[width=0.77 \linewidth]{FIT_logo.pdf}
+		
+		\vspace{\stretch{0.382}}
+		
+		\huge{IMS 2020/21 - Simulačná štúdia} \\
+		\LARGE{\textbf{Téma č. 6: Modelování vodohospodářství}}
+		
+		\vspace{\stretch{0.618}}
+	\end{center}
+	\begin{minipage}{0.25 \textwidth}
+		\begin{flushleft}
+			\Large
+			\today
+		\end{flushleft}
+	\end{minipage}
+	\hfill
+	\begin{minipage}{0.65 \textwidth}
+		\begin{flushright}
+			\Large
+			Radoslav Grenčík, \\
+			\large
+			\texttt{\href{mailto:xgrenc00@stud.fit.vutbr.cz}{xgrenc00@stud.fit.vutbr.cz}}
+		\end{flushright}
+	\end{minipage}
+\end{titlepage}
+
+% ---------------------------------------------------------------------------- %
+%                               TABLE OF CONTENTS                              %
+% ---------------------------------------------------------------------------- %
+\clearpage
+\thispagestyle{empty}
+\tableofcontents
+
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+\clearpage
+\pagenumbering{arabic}
+\setcounter{page}{3}
+
+\section{Úvod}
+
+
+
+\subsection{Autor, zdroje}
+
+Projekt vypracoval študenti VUT FIT v Brne Radoslav Grenčík.
+
+K vypracovaniu projektu boli využité poznatky a študijné texty z predmetu
+Modelování a simulace \cite{IMS_slides}, ktorý sa vyučuje na VUT FIT v Brne. Ako zdroj údajov
+slúžili rôzne štúdie a články na internete a takisto vlastné meranie.
+
+\subsection{Overovanie validity modelu}
+
+Validita modelu bola overovaná experimentovaním a porovnávaním výsledkov s
+reálnymi nameranými dátami, ktoré boli čerpané z overených zdrojov.
+
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+\pagebreak
+\section{Rozbor témy a použitých metód/technológií}
+
+
+
+\subsection{Použité postupy}
+
+Pre vytvorenie simulačného modelu bol využitý programovací jazyk C++. Ďalej boli použité postupy popísané v prednáškach k predmetu Modelování a simulace \cite{IMS_slides}, ktorý je vyučovaný na VUT FIT v Brne.
+
+\subsection{Popis pôvodu použitých metód a technológii}
+
+Boli použité štandardné knižnice jazyka C++. Ako nástroj pre preklad bol použitý GNU Make \cite{make}.
+
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+\pagebreak
+\section{Koncepcia metódy, prístupu, modelu}
+
+
+
+\subsection{Popis konceptuálneho modelu}
+
+
+
+\subsection{Forma konceptuálneho modelu}
+
+
+
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+\pagebreak
+\section{Architektúra simulačného modelu/simulátoru}
+
+
+
+\subsection{Mapovanie konceptuálneho modelu do simulačného modelu}
+
+
+
+\subsection{Spustenie simulačného modelu, parametre programu}
+
+
+
+\subsubsection{Popis parametrov programu}
+
+
+
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+\pagebreak
+\section{Podstata simulačných experimentov a ich priebeh}
+
+
+
+\subsection{Simulačné experimenty}
+
+\subsubsection{Experiment 1}
+
+
+
+\subsubsection{Experiment 2}
+
+
+
+\subsubsection{Experiment 3}
+
+
+
+\subsubsection{Experiment 4}
+
+
+
+\subsubsection{Experiment 5}
+
+
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+% ---------------------------------------------------------------------------- %
+\pagebreak
+\section{Zhrnutie simulačných experimentov a záver}
+
+
+
+% ---------------------------------------------------------------------------- %
+%                                   CITATIONS                                  %
+% ---------------------------------------------------------------------------- %
+\clearpage
+\bibliographystyle{czechiso}
+\renewcommand{\refname}{Literatúra}
+\bibliography{documentation}
+
+\end{document}

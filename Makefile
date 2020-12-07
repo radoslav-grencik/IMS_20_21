@@ -18,7 +18,7 @@ debug: $(SRC) $(HEADER)
 	$(CC) $(SRC) -o $(BIN) $(CFLAGS) -g -DDEBUG=1
 
 zip:
-	zip -r $(LOGIN).zip $(PROJECT_FILES)
+	zip -r 06_$(LOGIN).zip $(PROJECT_FILES)
 
 clean: docclean
 	rm -f *.o *.out $(BIN)
