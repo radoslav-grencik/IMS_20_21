@@ -91,8 +91,8 @@ Keďže tento projekt naväzuje na projekt, ktorý bol vytvorený do predmetu IM
 	\item Celosvetová produkcia plastu stúpa v roku 2018 bolo vyrobených 359 miliónov ton plastu, čo je 3,2\% nárast oproti roku 2017 \cite{plastic_Europe}.
 	\item Približne 30\% plastu je stále použitých, približne 56\% je odpad, približne 8\% je spálených a len približne 6\% je zrecyklovaných.
 	\item Približne 20\% zo zrecyklovaného odpadu sa znovu použije, takisto približne 20\% sa spáli a až 60\% zrecyklovaného odpadu ide na skládky \cite{plastic_pollution_stats} \cite{plastic_sciencemag}.
-	\item Väčšina plastového odpadu tvorená hlavne plastovými obalmi, druhé miesto tvoria rôzne plastové výrobky nespadajúce do katégorií: elektronika,
-	      automobilový priemysel a taktiež nie stavebníctvo \cite{plastic_graph}.
+	\item Väčšina plastového odpadu je tvorená hlavne plastovými obalmi, druhé miesto tvoria rôzne plastové výrobky nespadajúce do katégorií: elektronika,
+	      automobilový priemysel a ani stavebníctvo \cite{plastic_graph}.
 	\item Top 10 nájdených vecí pri medzinárodnom čistení pláží hnutím Ocean Conservancy v roku 2018 bol plastový odpad a to hlavne cigaretové ohorky, rôzne plastové obaly	alebo iné jednorázové produkty z plastu \cite{beach_cleanup}.
 \end{itemize}
 
@@ -183,6 +183,7 @@ Simulačný model je nutné pred spustením preložiť príkazom \texttt{make}. 
 	\item \texttt{-r}\quad Percento plastov poslaných na recykláciu. Maximálna percentuálna hodnota je nastavená na 62\%, pretože recyklácia sa netýka plastu ktorý je znovapoužitý a spálený (prednastavená hodnota: 6 (viz. \ref{appendix:petri_net}), minimálna hodnota: 0).
 	\item \texttt{-s}\quad Percento úspešne zrecyklovaných plastov (znovupoužitých). Maximálna hodnota je nastavená na 80\%, pretože 20\% z recyklovaných plastov sa spáli (prednastavená hodnota: 20 (viz. \ref{appendix:petri_net}), minimálna hodnota: 0).
 	\item \texttt{-i}\quad Percentuálny ročný nárast/pokles v produkcii plastov (prednastavená hodnota: 0).
+	\item \texttt{-h}\quad Zobrazí nápovedu.
 \end{itemize}
 
 % ---------------------------------------------------------------------------- %
@@ -228,6 +229,7 @@ V článku na stránke \textbf{National Geographic} \cite{plastic_recyclation_NA
 
 Ako možno vidieť v tabuľke \ref{tab:1}, simulátor vrátil hodnotu \textbf{Total ocean waste}: 262,51 megaton. Táto hodnota sa takmer zhoduje s údajom 250 megaton v článku na stránke \textbf{Ocean Conservancy} \cite{ocean_conservancy}. Týmto experimentom bola overená validita modelu.
 
+\pagebreak
 \subsubsection{Experiment 2}
 \label{label:exp2}
 
@@ -254,20 +256,126 @@ Budeme simulovať časový úsek 50 rokov. Najprv sa pokúsime zamerať na zní�
 		\multicolumn{2}{|l|}{\textbf{Total ocean waste}} & 218.15 megatons      &                    \\ \hline
 		\multicolumn{2}{|l|}{\textbf{Total world waste}} & 6695.90 megatons     &                    \\ \hline
 	\end{tabular}
-	\caption{Výsledok experimentu 2}
+	\caption{Výsledok experimentu 2.1}
 	\label{tab:2}
 \end{table}
 
-Pokúsime sa ponechať produkciu plastov na stagnujúcej úrovni a zoptimalizovať recykláciu a to tak, že zmaximalizujeme jej mieru z 6\% na 62\%.
+Pokúsime sa ponechať produkciu plastov na stagnujúcej úrovni a zoptimalizovať recykláciu tak, že maximalizujeme jej mieru z 6\% na 62\%.
 \texttt{./xgrenc00 -y 50 -r 62}.
 
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\multicolumn{2}{|l|}{\textbf{Total produced}}    & 17951.00             & 100\%               \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Reused}}            & 7518.00              & 41.88\%             \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Incinerated}}       & 3615.00              & 20.14\%             \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Recycled}}          & 11201.00             & (62.40\%)           \\ \hline
+		                                                 & \textit{Reused}      & 2193.00   &         \\ \hline
+		                                                 & \textit{Incinerated} & 2190.00   &         \\ \hline
+		                                                 & \textit{Wasted}      & 6818.00   &         \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Decomposed}}        & 1289.00              & 7.18\%              \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Waste}}             & 5529.00              &                     \\ \hline
+		                                                 & \textit{Land waste}  & 5259.77   & 29.30\% \\ \hline
+		                                                 & \textit{Ocean waste} & 269.23    & 1.50\%  \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total land waste}}  & 10086.77 megatons    &                     \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total ocean waste}} & 419.23 megatons      &                     \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total world waste}} & 10506.00 megatons    &                     \\ \hline
+	\end{tabular}
+	\caption{Výsledok experimentu 2.2}
+	\label{tab:3}
+\end{table}
+
+\pagebreak
+Pokúsime sa ponechať produkciu plastov na stagnujúcej úrovni a zoptimalizovať recykláciu tak, že maximalizujeme jej efektivitu z 20\% na 80\%.
+\texttt{./xgrenc00 -y 50 -s 80}.
+
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\multicolumn{2}{|l|}{\textbf{Total produced}}    & 17951.00             & 100\%              \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Reused}}            & 6276.00              & 34.96\%            \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Incinerated}}       & 1608.00              & 8.96\%             \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Recycled}}          & 1101.00              & (6.13\%)           \\ \hline
+		                                                 & \textit{Reused}      & 894.00   &         \\ \hline
+		                                                 & \textit{Incinerated} & 207.00   &         \\ \hline
+		                                                 & \textit{Wasted}      & 0.00     &         \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Decomposed}}        & 2001.00              & 11.15\%            \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Waste}}             & 8066.00              &                    \\ \hline
+		                                                 & \textit{Land waste}  & 7740.70  & 43.12\% \\ \hline
+		                                                 & \textit{Ocean waste} & 325.30   & 1.81\%  \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total land waste}}  & 12567.70 megatons    &                    \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total ocean waste}} & 475.30 megatons      &                    \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total world waste}} & 13043.00 megatons    &                    \\ \hline
+	\end{tabular}
+	\caption{Výsledok experimentu 2.3}
+	\label{tab:4}
+\end{table}
+
+Ako je možné vidieť z vyššie uvedených výsledkov experimentov, tak sa nasledujúcich 50 rokov treba jednoznačne zamerať na zníženie produkcie plastu (viz. tabuľka \ref{tab:2}), pretože sme nasimulovali, že sa v oceáne bude nachádzať ''len'' 218,15 megaton plastového odpadu oproti 419,23 megatonám odpadu keď maximalizujeme mieru recyklácie z 6\% na 62\% (viz. tabuľka \ref{tab:3}). Najviac sa neoplatí maximalizovať efektivitu recyklácie z 20\% na 80\% (viz. tabuľka \ref{tab:4}), pretože v tomto prípade zostane v oceánoch až 475.30 megaton plastového odpadu.
+
 \subsubsection{Experiment 3}
+\label{label:exp3}
 
+V treťom experimente budeme takisto simulovať časový úsek 50 rokov a zameráme sa na maximálnu možnú mieru recyklácie - 62\% a takisto zvýšime aj jej efektivitu na 50\% pri stagnujúcej produkcii plastov.
+\texttt{./xgrenc00 -y 50 -s 50 -r 62}.
 
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\multicolumn{2}{|l|}{\textbf{Total produced}}    & 17951.00             & 100\%               \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Reused}}            & 10980.00             & 61.17\%             \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Incinerated}}       & 3640.00              & 20.28\%             \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Recycled}}          & 11090.00             & (61.78\%)           \\ \hline
+		                                                 & \textit{Reused}      & 5554.00   &         \\ \hline
+		                                                 & \textit{Incinerated} & 2205.00   &         \\ \hline
+		                                                 & \textit{Wasted}      & 3331.00   &         \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Decomposed}}        & 644.00               & 3.59\%              \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Waste}}             & 2687.00              &                     \\ \hline
+		                                                 & \textit{Land waste}  & 2567.61   & 14.30\% \\ \hline
+		                                                 & \textit{Ocean waste} & 119.39    & 0.67\%  \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total land waste}}  & 7394.61 megatons     &                     \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total ocean waste}} & 269.39 megatons      &                     \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total world waste}} & 7664.00 megatons     &                     \\ \hline
+	\end{tabular}
+	\caption{Výsledok experimentu 3}
+	\label{tab:5}
+\end{table}
+
+Ako je možné vidieť z tabuľky \ref{tab:5}, značné zníženie množstva plastov v oceáne môžme dosiahnuť aj pomocou efektívnej recyklácie odpadu. Avšak takúto vysokú efektivitu recyklácie plastového odpadu je ťažké dosiahnuť a výsledky sú aj tak horšie ako pri klesjúcej produkcii plastov (viz. tabuľka \ref{tab:2}).
 
 \subsubsection{Experiment 4}
+\label{label:exp4}
 
+V poslednom experimente si predvedieme čo sa stane, ak nezakročíme a medziročne bude produkcia plastového odpadu rásť o 5\%. Budeme simulovať úsek 50 rokov.
+\texttt{./xgrenc00 -y 50 -i 5}.
 
+\begin{table}[ht]
+	\centering
+	\begin{tabular}{|l|l|l|l|}
+		\hline
+		\multicolumn{2}{|l|}{\textbf{Total produced}}    & 75160.12             & 100\%              \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Reused}}            & 23409.29             & 31.15\%            \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Incinerated}}       & 6766.13              & 9.00\%             \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Recycled}}          & 4572.16              & (6.08\%)           \\ \hline
+		                                                 & \textit{Reused}      & 963.00   &         \\ \hline
+		                                                 & \textit{Incinerated} & 879.26   &         \\ \hline
+		                                                 & \textit{Wasted}      & 2729.90  &         \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Decomposed}}        & 8813.55              & 11.73\%            \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Waste}}             & 36171.15             &                    \\ \hline
+		                                                 & \textit{Land waste}  & 34736.96 & 46.22\% \\ \hline
+		                                                 & \textit{Ocean waste} & 1434.19  & 1.91\%  \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total land waste}}  & 39563.96 megatons    &                    \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total ocean waste}} & 1584.19 megatons     &                    \\ \hline
+		\multicolumn{2}{|l|}{\textbf{Total world waste}} & 41148.15 megatons    &                    \\ \hline
+	\end{tabular}
+	\caption{Výsledok experimentu 4}
+	\label{tab:6}
+\end{table}
+
+Ako je možné vidieť z tabuľky \ref{tab:6}, ak nezakročíme a necháme medziročnú produkciu plastov rásť o 5\%, tak máme o 50 rokov veľký problém, pretože budeme mať vo svojich oceánoch až 1584,19 megaton plastového odpadu a to je len malý zlomok z celkového plastového odpadu, ktorý sa bude nachádzať na našej planéte Zemi.
 
 % ---------------------------------------------------------------------------- %
 % ---------------------------------------------------------------------------- %
@@ -275,7 +383,7 @@ Pokúsime sa ponechať produkciu plastov na stagnujúcej úrovni a zoptimalizova
 \pagebreak
 \section{Zhrnutie simulačných experimentov a záver}
 
-
+Z výsledku experimentu 1 (\ref{label:exp1}) vyplýva, že navrhnutý model je valídny a vie verne nasimulovať vývoj množstva plastového odpadu vo svetových oceánoch. Z výsledkov experimentov 2 (\ref{label:exp2}) a 3 (\ref{label:exp3}) môžme odpozorovať, že na to aby sme minimalizovali množstvo plastového odpadu, ktorý skončí v našich oceánoch za najbližších 50 rokov, bude nutné hlavne medziročne znížiť produkciu plastov a takisto zefektívniť ich recykláciu. Z výsledku experimentu 4 (\ref{label:exp4}) je jasné, že je čas konať a je potrebné okamžite znížiť množstvo produkovaného plastového odpadu.
 
 % ---------------------------------------------------------------------------- %
 %                                   CITATIONS                                  %

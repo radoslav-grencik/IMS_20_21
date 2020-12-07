@@ -38,10 +38,7 @@ int Error(int errnum, string err)
 
 int ArgumentParser::PrintHelp()
 {
-    cout << "USAGE: ./xgrenc00 [-h]" << endl
-         << endl
-         << "OPTIONS:" << endl
-         << "-h    Show this help." << endl;
+    cout << "USAGE: ./xgrenc00 [-h] [-r int] [-s int] [-y int] [-i int]" << endl;
     return EXIT_HELP;
 }
 
