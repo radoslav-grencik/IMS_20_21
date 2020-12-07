@@ -235,18 +235,20 @@ void Experiment()
         rw += tmp9;
     }
 
-    long double totalWordWaste = 5000; // 6300 * 0.8
-    waste -= decomposed;
+    long double totalLandWaste = 4827; // 6300 Mtons of plastic created to date, 79% is waste...150Mtons is in the oceans => 6300 * 0,79 - 150 = 4827 Mtons
+    long double totalOceanWaste = 150; // it is estimated that right now 150 Mtons of plastic is in the oceans
     landWaste -= decomposed * landWaste / waste;
     oceanWaste -= decomposed * oceanWaste / waste;
-    totalWordWaste += waste;
-    if (totalWordWaste < 0)
-        totalWordWaste = 0;
+    waste -= decomposed;
+    totalLandWaste += landWaste;
+    totalOceanWaste += oceanWaste;
+    if (totalLandWaste < 0)
+        totalLandWaste = 0;
 
     cout << fixed << setprecision(2)
          << "========================================================" << endl
          << "== Recycling Rate:\t\t\t" << RR << "%" << endl
-         << "== Recycling Succes:\t\t\t" << RS << "%" << endl
+         << "== Recycling Success:\t\t\t" << RS << "%" << endl
          << "== Years simulated:\t\t\t" << Y << endl
          << "== Yearly de/increase in production:\t" << ((yearlyIncrease - 1) * 100) << "%" << endl
          << "========================================================" << endl
@@ -255,10 +257,10 @@ void Experiment()
          << "Reused Mtons:\t\t";
     cout << setw(12) << reused << "\t" << reused / total * 100 << "%" << endl
          << "Incinerated Mtons:\t";
-    cout << setw(12) << incinerated << "\t" << incineratedTons / total * 100 << "%" << endl
+    cout << setw(12) << incinerated << "\t" << incinerated / total * 100 << "%" << endl
          << "--------------------------------------------------------" << endl
          << "Recycled Mtons:\t\t";
-    cout << setw(12) << rec << "\t(" << recycledTons / total * 100 << "%)\tof that:" << endl
+    cout << setw(12) << rec << "\t(" << rec / total * 100 << "%)\tof that:" << endl
          << "\t- Reused:\t";
     cout << setw(12) << rr << endl
          << "\t- Incinerated:\t";
@@ -274,8 +276,12 @@ void Experiment()
     cout << setw(12) << landWaste << "\t" << landWaste / total * 100 << "%" << endl
          << "\t- Ocean waste:\t";
     cout << setw(12) << oceanWaste << "\t" << oceanWaste / total * 100 << "%" << endl
-         << "Total world waste Mtons:";
-    cout << setw(12) << totalWordWaste << endl
+         << "Total LAND waste Mtons:\t";
+    cout << setw(12) << totalLandWaste << endl
+         << "Total OCEAN waste Mtons:";
+    cout << setw(12) << totalOceanWaste << endl
+         << "TOTAL WORLD waste Mtons:";
+    cout << setw(12) << totalLandWaste + totalOceanWaste << endl
          << "========================================================" << endl;
 }
 
