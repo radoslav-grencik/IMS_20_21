@@ -6,16 +6,17 @@ DOC = documentation
 
 CC = g++
 CFLAGS = -std=c++11 -Wall -Wextra -Werror -pedantic
+LDLIBS = -lsimlib
 
 HEADER = $(BIN).hpp
 SRC = $(BIN).cpp
 PROJECT_FILES = $(SRC) $(HEADER) Makefile $(DOC).pdf
 
 $(BIN): $(SRC) $(HEADER)
-	$(CC) $(SRC) -o $(BIN) $(CFLAGS)
+	$(CC) $(SRC) -o $(BIN) $(CFLAGS) $(LDLIBS)
 
 debug: $(SRC) $(HEADER)
-	$(CC) $(SRC) -o $(BIN) $(CFLAGS) -g -DDEBUG=1
+	$(CC) $(SRC) -o $(BIN) $(CFLAGS) -g -DDEBUG=1 $(LDLIBS)
 
 zip:
 	zip -r 06_$(LOGIN).zip $(PROJECT_FILES)
